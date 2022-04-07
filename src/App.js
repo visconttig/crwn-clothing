@@ -1,14 +1,12 @@
-import './App.css';
 
 
 
 
 
-function App() {
+
+const App = () => {
   return (
-    <div>
-      Hello there!
-    </div>
+    <div>Hello there!</div>
   );
 }
 
