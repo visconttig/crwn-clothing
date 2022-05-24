@@ -1,4 +1,6 @@
-import { ReactFragment, useState } from "react";
+import { useState } from "react";
+import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 
 const defaultFormValues = {
     displayName: "",
@@ -11,8 +13,33 @@ const SignUpForm = () => {
     const [formValues, setFormValues] = useState(defaultFormValues);
     const {displayName, email, password, confirmPassword} = formValues;
 
-    const handleSubmit = (event) => {
+    const resetFormFields = () => {
+        setFormValues(defaultFormValues);
+    };
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if(password != confirmPassword){
+            alert("Passwords dont match!");
+            return;
+        }
+
+        try{
+            const { user } = await createAuthUserWithEmailAndPassword(email, password);
+
+            await createUserDocumentFromAuth(user, {displayName});
+            resetFormFields();
+
+        } catch(error){
+            if(error.code == "auth/email-already-in-use"){
+                alert("Cannot create user, email already in use.");
+            } else {
+                console.log("Error creating the user", error);
+            }
+        }
+
+        
     };
 
     const handleChange = (event) => {
@@ -24,7 +51,7 @@ const SignUpForm = () => {
            [name]: value
         });
 
-        console.log(formValues);
+      //  console.log(formValues);
     }
 
 
@@ -53,14 +80,16 @@ const SignUpForm = () => {
                 value={password} 
                 name="password"
                 onChange={handleChange}
-                required />
+                required
+                minLength={6} />
 
                 <label>Confirm password</label>
                 <input type="password" 
                 value={confirmPassword} 
                 name="confirmPassword"
                 onChange={handleChange} 
-                required />
+                required
+                minLength={6} />
 
                 <button type="submit" >Submit form</button>
             </form>
