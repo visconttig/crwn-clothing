@@ -51,7 +51,7 @@ const SignUpForm = () => {
            [name]: value
         });
 
-      //  console.log(formValues);
+      
     }
 
 
