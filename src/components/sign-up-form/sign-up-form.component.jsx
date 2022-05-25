@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+import FormInput from "../../components/form-input/form-input.component.jsx";
 
 const defaultFormValues = {
     displayName: "",
@@ -20,7 +21,7 @@ const SignUpForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if(password != confirmPassword){
+        if(password !== confirmPassword){
             alert("Passwords dont match!");
             return;
         }
@@ -32,7 +33,7 @@ const SignUpForm = () => {
             resetFormFields();
 
         } catch(error){
-            if(error.code == "auth/email-already-in-use"){
+            if(error.code === "auth/email-already-in-use"){
                 alert("Cannot create user, email already in use.");
             } else {
                 console.log("Error creating the user", error);
@@ -61,30 +62,39 @@ const SignUpForm = () => {
             <p>Sign up with your email and password</p>
 
             <form onSubmit={ handleSubmit }>
-                <label>Display Name</label>
-                <input type="text" 
+
+        
+                <FormInput 
+                type="text"
+                label="Display Name"
                 value={displayName} 
                 name="displayName" 
                 onChange={handleChange} 
                 required />
 
-                <label>Email</label>
-                <input type="email" 
+                
+                <FormInput 
+                type="email"
+                label="Email"
                 value={email} 
                 name="email"
                 onChange={handleChange} 
                 required />
 
-                <label>Password</label>
-                <input type="password" 
+                
+                <FormInput 
+                type="password"
+                label="Password" 
                 value={password} 
                 name="password"
                 onChange={handleChange}
                 required
                 minLength={6} />
 
-                <label>Confirm password</label>
-                <input type="password" 
+                
+                <FormInput 
+                type="password"
+                label="Confirm Password" 
                 value={confirmPassword} 
                 name="confirmPassword"
                 onChange={handleChange} 
