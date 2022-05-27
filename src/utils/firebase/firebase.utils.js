@@ -11,6 +11,7 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword
  } from "firebase/auth";
+ import { signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWddBCkb9Rd8gMDMEgVZwQkITGVda3mO8",
@@ -65,11 +66,14 @@ export const createUserDocumentFromAuth = async (userAuth, aditionalInfo) => {
     return userDocRef;
 }
 
-export const createAuthUserWithEmailAndPassword = async (email, password) => {
-    
+export const createAuthUserWithEmailAndPassword = async (email, password) => { 
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-   
     return userCredential;
    
 };
+
+export const signInUserWithEmailAndPassword = async (email, password) => {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential;
+}
 
