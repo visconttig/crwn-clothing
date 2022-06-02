@@ -19,9 +19,16 @@ const SignInForm = () => {
     const handleChange = (event) => {
         const {name, value} = event.target;
 
-        setFormValues({
-            ...formValues,
-            [name]: value
+        // setFormValues({
+        //     ...formValues,
+        //     [name]: value
+        // });
+        // using functional update to prevent uncontrolled component WARNING !
+        setFormValues(prevValues => {
+            return {
+                ...prevValues,
+                [name]: value
+            }
         });
     };
 
@@ -44,7 +51,12 @@ const SignInForm = () => {
     };
 
     const resetFormFields = () => {
-        setFormValues({defaultFormValues});
+        setFormValues(prevValues => {
+            return {
+                ...prevValues,
+                defaultFormValues
+            }
+        });
     };
 
     const signInWithGoogle = async () => {
