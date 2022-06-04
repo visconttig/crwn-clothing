@@ -12,6 +12,7 @@ import {
     createUserWithEmailAndPassword
  } from "firebase/auth";
  import { signInWithEmailAndPassword } from "firebase/auth";
+ import { signOut } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWddBCkb9Rd8gMDMEgVZwQkITGVda3mO8",
@@ -73,7 +74,11 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential;
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    return user;
 }
+
+export const SignOutUser = () => {
+    signOut(auth);
+}; 
 
