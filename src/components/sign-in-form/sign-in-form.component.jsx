@@ -19,10 +19,7 @@ const SignInForm = () => {
     const handleChange = (event) => {
         const {name, value} = event.target;
 
-        // setFormValues({
-        //     ...formValues,
-        //     [name]: value
-        // });
+        
         // using functional update to prevent uncontrolled component WARNING !
         setFormValues(prevValues => {
             return {
@@ -39,6 +36,8 @@ const SignInForm = () => {
             const userCredential = await signInAuthUserWithEmailAndPassword(email, password);
         console.log(userCredential);
         resetFormFields();
+        console.log("this line was hit");
+        console.log(formValues);
         } catch(error){
             if(error.code === "auth/user-not-found"){
                 alert("User not found: please check the provided email account.");
@@ -51,12 +50,7 @@ const SignInForm = () => {
     };
 
     const resetFormFields = () => {
-        setFormValues(prevValues => {
-            return {
-                ...prevValues,
-                defaultFormValues
-            }
-        });
+        setFormValues(defaultFormValues);
     };
 
     const signInWithGoogle = async () => {

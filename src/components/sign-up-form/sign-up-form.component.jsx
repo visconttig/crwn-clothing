@@ -17,12 +17,7 @@ const SignUpForm = () => {
     const {displayName, email, password, confirmPassword} = formValues;
 
     const resetFormFields = () => {
-        setFormValues(prevValues => {
-            return {
-                ...prevValues,
-                defaultFormValues
-            }
-        });
+        setFormValues(defaultFormValues);
     };
 
     const handleSubmit = async (event) => {
@@ -53,11 +48,7 @@ const SignUpForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        // setFormValues({
-        //     ...formValues,
-        //     // this is to replace the actual key value.
-        //    [name]: value
-        // });
+        
         // using functional update to prevent uncontrolled component WARNING !
         setFormValues(prevValues => {
             return {
