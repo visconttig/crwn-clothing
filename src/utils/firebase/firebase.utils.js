@@ -13,6 +13,8 @@ import {
  } from "firebase/auth";
  import { signInWithEmailAndPassword } from "firebase/auth";
  import { signOut } from "firebase/auth";
+ import { onAuthStateChanged } from "firebase/auth";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWddBCkb9Rd8gMDMEgVZwQkITGVda3mO8",
@@ -81,4 +83,8 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const SignOutUser = () => {
     signOut(auth);
 }; 
+
+export const onAuthStateChangedListener = (callback) => {
+    onAuthStateChanged(auth, callback);
+};
 
