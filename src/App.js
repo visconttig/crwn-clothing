@@ -3,16 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./routes/navigation/navigation.component.jsx";
 import Authentication from "./routes/authentication/authentication.component.jsx";
 import SignUpForm from "./components/sign-up-form/sign-up-form.component.jsx"
+import Shop  from "./routes/shop/shop-page.component.jsx";
 
 
-
-const Shop = () => {
-  return (
-    <div>
-      <h1>Im the SHOP page</h1>
-    </div>
-  );
-}
 
 const App = () => {
   return (
