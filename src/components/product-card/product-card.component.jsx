@@ -1,23 +1,19 @@
 import { React } from "react";
 import "./product-card.styles.scss";
+import Button from "../button/button.component.jsx";
 
 const ProductCard = ({id, name, price, imageUrl}) => {
 
     return (
-        <div className="master" key={id}>
-            <div className="product-container" style={
-                {
-                    backgroundImage: `url(${imageUrl})`
-                }
-            }>
-                <button className="cart-button">ADD TO CART</button>
-                
-            </div>
-            <div className="product-details-container">
-                <span className="detail">{name}</span>
-                <span className="detail">{price}</span>
-            </div>
+        <div className="product-card-container" key={id}>
+            <img src={`${imageUrl})`} />
+
             
+            <div className="footer">
+                <span className="name">{name}</span>
+                <span className="price">{price}</span>
+            </div> 
+            <Button buttonType="inverted">ADD TO CART</Button> 
         </div>
     )
 }
