@@ -8,7 +8,6 @@ const ProductCard = ({id, name, price, imageUrl}) => {
         <div className="product-card-container" key={id}>
             <img src={`${imageUrl})`} />
 
-            
             <div className="footer">
                 <span className="name">{name}</span>
                 <span className="price">{price}</span>
