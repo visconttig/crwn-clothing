@@ -1,0 +1,22 @@
+
+.cart-item-container {
+  //  background-color: red;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+    height: 100%;
+    padding: 3%;
+}
+
+.item-details-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+}
+
+.image {
+   width: 25%;
+   height: 100%;
+}
+
