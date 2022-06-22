@@ -15,6 +15,8 @@ import {
  import { signOut } from "firebase/auth";
  import { onAuthStateChanged } from "firebase/auth";
 
+ import { collection, writeBatch } from "firebase/firestore";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWddBCkb9Rd8gMDMEgVZwQkITGVda3mO8",
@@ -42,6 +44,22 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 export const db = getFirestore();
 
+
+// // initial saving of products to DB
+// export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+//     const collectionRef = collection(db, collectionKey);
+
+//     const wBatch = writeBatch(db);
+    
+//     objectsToAdd.forEach((object) => {
+//         const docRef = doc(collectionRef, object.title.toLowerCase());
+//         wBatch.set(docRef, object);
+//     });
+
+//     wBatch.commit();
+//     console.log("done writing to DB");
+
+// }; 
 
 export const createUserDocumentFromAuth = async (userAuth, aditionalInfo) => {
     const userDocRef = await doc(db, "users", userAuth.uid);
