@@ -16,6 +16,7 @@ import {
  import { onAuthStateChanged } from "firebase/auth";
 
  import { collection, writeBatch } from "firebase/firestore";
+ import { query, getDocs } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -43,6 +44,21 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 export const db = getFirestore();
+
+export const getCategoriesAndDocumentsFromDb = async () => {
+    const collectionRef = collection(db, "categories");
+
+    const q = query(collectionRef);
+
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.reduce((accumulator, docSnapshot) => {
+        const { title, items } = docSnapshot.data();
+        accumulator[title.toLowerCase()] = items;
+        return accumulator;
+    }, {});
+
+    return categoryMap;
+}
 
 
 // // initial saving of products to DB
