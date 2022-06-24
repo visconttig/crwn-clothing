@@ -9,15 +9,15 @@ import { useEffect } from "react";
 // const data = SHOP_DATA;
 
 
-export const ProductsContext = createContext({
-    products: [],
+export const CategoriesContext = createContext({
+    categoriesMap: {},
     setData: () => null
 });
 
 
-export const ProductsContextProvider = ({children}) => {
-    const [shopData, setShopData] = useState([]);
-    let values = {shopData, setShopData};
+export const CategoriesContextProvider = ({children}) => {
+    const [categoriesMap, setCategoriesMap] = useState({});
+    let values = {categoriesMap, setCategoriesMap};
     
     // useEffect(() => {    // initial saving of products to DB
     //     addCollectionAndDocuments("categories", SHOP_DATA);
@@ -27,12 +27,13 @@ export const ProductsContextProvider = ({children}) => {
         const getCategories = async () => {
             const categoriesMap = await getCategoriesAndDocumentsFromDb();
             console.log(categoriesMap);
+            setCategoriesMap(categoriesMap);
         }
 
         getCategories();
     }, []);
 
     return (
-        <ProductsContext.Provider value={values}>{children}</ProductsContext.Provider>
+        <CategoriesContext.Provider value={values}>{children}</CategoriesContext.Provider>
     );
 };
