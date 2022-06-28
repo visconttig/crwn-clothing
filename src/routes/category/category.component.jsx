@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Fragment } from "react";
 import { useState, useEffect } from "react";
 import { CategoriesContext } from "../../contexts/categories.context.jsx";
 import { useParams } from "react-router-dom";
@@ -16,7 +17,9 @@ const Category = () => {
     }, [category, categoriesMap]);
 
     return (
-           <div className="category-container">
+           <Fragment>
+            <h2 className="category-title">{category.toUpperCase()} </h2>
+            <div className="category-container">
             {
                 products &&  // programming defensively against null or undefined !!
                 products.map((product) => (
@@ -24,6 +27,7 @@ const Category = () => {
             ))
             }
            </div>
+           </Fragment>
     );
 }
 
