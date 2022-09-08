@@ -23,10 +23,12 @@ height: 240px;
 
 
 
-  //   .empty-message {
-  //     font-size: 18px;
-  //     margin: 50px auto;
-  //   }
+export const EmptyMessage = styled.p`
+font-size: 18px;
+      margin: 50px auto;
+`;
+
+
   
     
   //   button {
