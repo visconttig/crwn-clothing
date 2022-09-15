@@ -4,6 +4,7 @@ import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
 import FormInput from "../../components/form-input/form-input.component.jsx";
 import "./sign-up-form.styles.scss";
 import Button from "../../components/button/button.component.jsx";
+import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component.jsx";
 
 
 const defaultFormValues = {
