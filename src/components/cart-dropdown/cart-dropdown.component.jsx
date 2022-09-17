@@ -18,7 +18,7 @@ const CartDropdown = () => {
                     
                 ))) 
                 : (
-                    <EmptyMessage as="span">Your cart is empty.</EmptyMessage>
+                    <EmptyMessage>Your cart is empty.</EmptyMessage>
                 )}
             </CartItems>
             <Link to="/checkout" ><Button>GO TO CHECKOUT</Button></Link>
