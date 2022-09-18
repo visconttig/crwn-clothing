@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import Button from "../button/button.component.jsx";
 
+export const $Button = styled(Button)`
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    display: none;
+
+    &:hover {
+      opacity: 0.85;
+    }
+`;
+
 export const $ProductCardContainer = styled.div`
   width: 100%;
   display: flex;
@@ -8,28 +20,25 @@ export const $ProductCardContainer = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
+
+  &:hover {
+   transform: scale(1.1);
+
+    & ${ $Button } {
+    display: flex;
+  }
+  }
 `;
+
 
 export const $Img = styled.img`
   width: 100%;
   height: 95%;
   object-fit: cover;
   margin-bottom: 5px;
+
   &:hover {
     opacity: 0.8;
-  }
-`;
-
-export const $Button = styled(Button)`
-  width: 80%;
-  opacity: 0.7;
-  position: absolute;
-  top: 255px;
-  display: none;
-  &:hover {
-    opacity: 0.85;
-    display: flex !important;
-    border: 10px solid green;
   }
 `;
 
@@ -41,12 +50,12 @@ export const $Footer = styled.div`
   font-size: 18px;
 `;
 
-export const $Name = styled.p`
+export const $Name = styled.span`
   width: 90%;
   margin-bottom: 15px;
 `;
 
-export const $Price = styled.p`
+export const $Price = styled.span`
   width: 10%;
 `;
-
+   
