@@ -12,7 +12,7 @@ const DirectoryItem = ({ category }) => {
     <$DirectoryItemContainer>
       <$BackgroundImage imageUrl={imageUrl} />
       <$DirectoryItemBody>
-        <$H2>{title.toUpperCase()}</$H2>
+        <$H2>{title}</$H2>
         <$P>Shop Now</$P>
       </$DirectoryItemBody>
     </$DirectoryItemContainer>
