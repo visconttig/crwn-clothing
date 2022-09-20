@@ -20,26 +20,27 @@ export const $DirectoryItemContainer = styled.div`
   }
 
   &.large {
-  height: 380px;
-}
+    height: 380px;
+  }
 
   &:hover {
     cursor: pointer;
   }
 `;
 
-export const $BackgroundImage = styled.img`
+export const $BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
+  // imageUrl recieved as props
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 
   &:hover {
     transform: scale(1.1);
     transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
   }
 `;
-
 
 export const $DirectoryItemBody = styled.div`
   height: 90px;
