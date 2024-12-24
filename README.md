@@ -2,7 +2,7 @@
 
 Welcome to the Crown Clothing E-Commerce Website! This project is an online store designed to provide a seamless shopping experience for clothing enthusiasts. Our platform is built to help customers browse, select, and purchase clothing with ease.
 
-![picture of clothing e-commerce front](https://preeminent-sherbet-2ec81c.netlify.app/images/crwn-clothing.jpg)
+![picture of clothing e-commerce front](https://visconttig.com/images/crwn-clothing.jpg)
 
 ## Table of Contents
 
